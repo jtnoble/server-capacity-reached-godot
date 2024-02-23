@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bc3878gi5j828"]
+
+[ext_resource type="Texture2D" uid="uid://b23u2wmj58dwf" path="res://images/main_menu_img.jpg" id="1_7ji57"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_gwpah"]
+[ext_resource type="Texture2D" uid="uid://eqibi62xrhhc" path="res://images/titletext.png" id="2_xmml1"]
+[ext_resource type="Texture2D" uid="uid://dlip37b6lpdct" path="res://images/servercapacitytext.png" id="3_vh1kh"]
+[ext_resource type="Script" path="res://scenes/StartLabel.gd" id="5_db6kl"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_gwpah")
+
+[node name="MainMenuImg" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("1_7ji57")
+
+[node name="Titletext" type="Sprite2D" parent="."]
+position = Vector2(655, 40)
+scale = Vector2(2.69667, 2.77)
+texture = ExtResource("2_xmml1")
+
+[node name="Servercapacitytext" type="Sprite2D" parent="."]
+position = Vector2(647, 184)
+scale = Vector2(2.69625, 2.57716)
+texture = ExtResource("3_vh1kh")
+
+[node name="StartNextGameTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="CompleteLabel" type="Label" parent="."]
+visible = false
+offset_left = 112.0
+offset_top = 397.0
+offset_right = 1209.0
+offset_bottom = 548.0
+theme_override_font_sizes/font_size = 110
+text = "Minigame Complete!"
+
+[node name="StartLabel" type="Label" parent="."]
+offset_left = 159.0
+offset_top = 412.0
+offset_right = 1089.0
+offset_bottom = 537.0
+theme_override_font_sizes/font_size = 91
+text = "Press 'Space' To Start"
+script = ExtResource("5_db6kl")
+
+[connection signal="timeout" from="StartNextGameTimer" to="." method="_on_start_next_game_timer_timeout"]

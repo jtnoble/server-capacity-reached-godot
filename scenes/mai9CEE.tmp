@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://bc3878gi5j828"]
+
+[ext_resource type="Texture2D" uid="uid://b23u2wmj58dwf" path="res://images/main_menu_img.jpg" id="1_7ji57"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_gwpah"]
+[ext_resource type="Texture2D" uid="uid://eqibi62xrhhc" path="res://images/titletext.png" id="2_xmml1"]
+[ext_resource type="Texture2D" uid="uid://dlip37b6lpdct" path="res://images/servercapacitytext.png" id="3_vh1kh"]
+[ext_resource type="PackedScene" uid="uid://cpeipeqkur32d" path="res://scenes/mg1/minigame_1.tscn" id="4_05pgm"]
+[ext_resource type="Script" path="res://scenes/RichTextLabelBlack.gd" id="6_xroab"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_gwpah")
+
+[node name="MainMenuImg" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("1_7ji57")
+
+[node name="Titletext" type="Sprite2D" parent="."]
+position = Vector2(655, 40)
+scale = Vector2(2.69667, 2.77)
+texture = ExtResource("2_xmml1")
+
+[node name="Servercapacitytext" type="Sprite2D" parent="."]
+position = Vector2(647, 184)
+scale = Vector2(2.69625, 2.57716)
+texture = ExtResource("3_vh1kh")
+
+[node name="minigame_1" parent="." instance=ExtResource("4_05pgm")]
+position = Vector2(70, 293)
+scale = Vector2(0.2, 0.2)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 570.0
+offset_top = 482.0
+offset_right = 693.0
+offset_bottom = 522.0
+text = "CONGRATS"
+script = ExtResource("6_xroab")
