@@ -3,14 +3,25 @@ extends Node2D
 var mg1 = preload("res://scenes/mg1/minigame_1.tscn")
 var scenes: Array = [mg1]
 var scene_index: int = 0
+var fading_out: bool = false
 
+func _ready():
+	$ConnectingEndGameLabel.visible = false
+	
+func _process(delta):
+	if fading_out:
+		set_modulate(lerp(get_modulate(), Color(1,1,1,0), 0.008))
+		
 func first_load():
 	$Servercapacitytext.fading_in = true
 	load_game(false)
 	
 func next_level():
 	scene_index = scene_index + 1
-	load_game(true)
+	if scene_index < scenes.size():
+		load_game(true)
+		return
+	all_minigames_completed()
 
 func load_game(level_complete):
 	# Load game
@@ -34,3 +45,16 @@ func _on_start_next_game_timer_timeout():
 func _on_minigame_complete():
 	print_debug("MINIGAME COMPLETE")
 	next_level()
+
+func all_minigames_completed():
+	print_debug("All minigames have been completed.")
+	$Servercapacitytext.fading_out = true
+	$ConnectingEndGameLabel.visible = true
+	$EndGameBeforeFadeTimer.start()
+	
+func _on_end_game_before_fade_timer_timeout():
+	fading_out = true
+	$SwitchSceneTimer.start()
+
+func _on_switch_scene_timer_timeout():
+	get_tree().change_scene_to_file("res://scenes/end_game.tscn")

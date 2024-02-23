@@ -9,13 +9,13 @@ signal minigame_completed()
 func _ready():
 	set_modulate(Color(1,1,1,0))
 	$Timer.start()
-	player.position = Vector2(268, 770)
+	player.position = Vector2(300, 300)
 	
 func restart_game():
 	if $Timer.time_left > 0:
 		$Timer.stop()
 	$Timer.start()
-	player.position = Vector2(268, 770)
+	player.position = Vector2(300, 300)
 
 func win():
 	minigame_completed.emit()

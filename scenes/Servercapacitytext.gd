@@ -8,16 +8,16 @@ func _ready():
 	
 func fade_in():
 	set_modulate(lerp(get_modulate(), Color(1,1,1,1), 0.01))
-	if get_modulate() == Color(1,1,1,1):
+	if get_modulate().a > 0.99:
 		fading_in = false
 	
 func fade_out():
-	set_modulate(lerp(get_modulate(), Color(1,1,1,0), 0.1))
-	if get_modulate() == Color(1,1,1,0):
+	set_modulate(lerp(get_modulate(), Color(1,1,1,0), 0.05))
+	if get_modulate().a < 0.01:
 		fading_out = false
 	
 func _process(delta):
 	if fading_in:
 		fade_in()
-	elif fading_out:
+	if fading_out:
 		fade_out()
