@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bc3878gi5j828"]
+[gd_scene load_steps=7 format=3 uid="uid://bc3878gi5j828"]
 
 [ext_resource type="Texture2D" uid="uid://b23u2wmj58dwf" path="res://images/main_menu_img.jpg" id="1_7ji57"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_gwpah"]
 [ext_resource type="Texture2D" uid="uid://eqibi62xrhhc" path="res://images/titletext.png" id="2_xmml1"]
 [ext_resource type="Texture2D" uid="uid://dlip37b6lpdct" path="res://images/servercapacitytext.png" id="3_vh1kh"]
 [ext_resource type="Script" path="res://scenes/StartLabel.gd" id="5_db6kl"]
+[ext_resource type="Script" path="res://scenes/Servercapacitytext.gd" id="5_urpim"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_gwpah")
@@ -22,6 +23,7 @@ texture = ExtResource("2_xmml1")
 position = Vector2(647, 184)
 scale = Vector2(2.69625, 2.57716)
 texture = ExtResource("3_vh1kh")
+script = ExtResource("5_urpim")
 
 [node name="StartNextGameTimer" type="Timer" parent="."]
 wait_time = 5.0

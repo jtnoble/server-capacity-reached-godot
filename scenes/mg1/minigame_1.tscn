@@ -73,7 +73,7 @@ offset_bottom = 21.6667
 color = Color(1, 1, 0, 1)
 
 [node name="goal" type="Area2D" parent="."]
-position = Vector2(5395, 1661)
+position = Vector2(205, 1383)
 scale = Vector2(3, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="goal"]
