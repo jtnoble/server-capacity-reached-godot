@@ -1,7 +1,8 @@
 extends Node2D
 
 var mg1 = preload("res://scenes/mg1/minigame_1.tscn")
-var scenes: Array = [mg1]
+var mg2 = preload("res://scenes/mg2/minigame_2.tscn")
+var scenes: Array = [mg1, mg2]
 var scene_index: int = 0
 var fading_out: bool = false
 
