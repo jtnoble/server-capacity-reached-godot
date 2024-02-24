@@ -1,4 +1,5 @@
 extends Button
 
 func _on_pressed():
-	pass
+	print_debug("button clicked")
+	get_parent().puzzle_completed.emit()
