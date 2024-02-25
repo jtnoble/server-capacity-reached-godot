@@ -5,8 +5,11 @@ var spot_games_arr: Array
 var loaded_spot_games_arr: Array
 var list_of_spot_games: Array = [
 	"res://scenes/mg2/minigame_2_puzzle_1.tscn",
-	"res://scenes/mg2/minigame_2_puzzle_1.tscn",
-	"res://scenes/mg2/minigame_2_puzzle_1.tscn"
+	"res://scenes/mg2/minigame_2_puzzle_2.tscn",
+	"res://scenes/mg2/minigame_2_puzzle_3.tscn",
+	"res://scenes/mg2/minigame_2_puzzle_4.tscn",
+	"res://scenes/mg2/minigame_2_puzzle_5.tscn",
+	"res://scenes/mg2/minigame_2_puzzle_6.tscn"
 	]
 var current_game
 
@@ -17,9 +20,16 @@ func _ready():
 	restart_game()
 	
 func randomize_spot_games_arr():
-	# TODO: Randomize an array for spot the difference
-	return [list_of_spot_games[0], list_of_spot_games[1], list_of_spot_games[2]]
-	#return randomize()
+	var available_numbers: Array = []
+	for i in range(list_of_spot_games.size()):
+		available_numbers.append(i)
+	available_numbers.shuffle()
+	var random_numbers = available_numbers.slice(0, 3)
+	return [
+		list_of_spot_games[random_numbers[0]],
+		list_of_spot_games[random_numbers[1]],
+		list_of_spot_games[random_numbers[2]]
+		]
 	
 func generate_spot_the_diff_arr():
 	var spot_games = randomize_spot_games_arr()
@@ -40,6 +50,7 @@ func restart_game():
 		$Timer.stop()
 	$Timer.start()
 	index = 0
+	$BlankOutOfThree/NumberOutOf.text = str(index)
 	generate_spot_the_diff_arr()
 	start_puzzle()
 
