@@ -6,6 +6,9 @@ var mg3 = preload("res://scenes/mg3/minigame_3.tscn")
 var scenes: Array = [mg1, mg2, mg3]
 var scene_index: int = 0
 var fading_out: bool = false
+var current_mg
+
+@onready var win_mg_noise = $Audio/WinMinigameNoise
 
 func _ready():
 	$ConnectingEndGameLabel.visible = false
@@ -21,6 +24,7 @@ func first_load():
 func next_level():
 	scene_index = scene_index + 1
 	if scene_index < scenes.size():
+		win_mg_noise.play()
 		load_game(true)
 		return
 	all_minigames_completed()
@@ -37,9 +41,20 @@ func load_scene(scene):
 	mg.position.y = 300
 	mg.scale.x = 0.2
 	mg.scale.y = 0.2
-	add_child(mg)
 	mg.connect("minigame_completed", _on_minigame_complete)
+	if mg.reloadable:
+		mg.connect("minigame_reload", _on_reload_minigame)
+	call_deferred("_handle_deferred_load_scene", mg)
+	current_mg = mg
 
+func _handle_deferred_load_scene(node):
+	add_child(node)
+	
+func _on_reload_minigame():
+	print_debug("MG RELOAD")
+	current_mg.queue_free()
+	load_scene(scenes[scene_index])
+	
 func _on_start_next_game_timer_timeout():
 	$CompleteLabel.visible = false
 	load_scene(scenes[scene_index])

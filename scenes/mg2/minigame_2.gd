@@ -1,5 +1,7 @@
 extends Node2D
 
+var reloadable: bool = false
+
 var index: int = 0
 var spot_games_arr: Array
 var loaded_spot_games_arr: Array
@@ -12,6 +14,7 @@ var list_of_spot_games: Array = [
 	"res://scenes/mg2/minigame_2_puzzle_6.tscn"
 	]
 var current_game
+@onready var win_sound = $WinSingleGameSound
 
 signal minigame_completed()
 
@@ -65,6 +68,7 @@ func _on_puzzle_complete():
 func win_single_game():
 	index = index + 1
 	$BlankOutOfThree/NumberOutOf.text = str(index)
+	win_sound.play()
 
 func win():
 	minigame_completed.emit()

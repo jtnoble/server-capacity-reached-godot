@@ -1,15 +1,23 @@
-extends CharacterBody2D
+extends RigidBody2D
 
-var up_force: float = -10000
-var move_speed: float = 250
-var gravity: float = 10000
+@export var up_force: float = -1200
+var first_move: bool = true
+
+func _ready():
+	set_deferred("lock_rotation", true)
+	set_deferred("freeze", true)
 
 func _physics_process(delta):
-	velocity.x = move_speed
-	velocity.y = gravity * delta
 	if Input.is_action_just_pressed("action"):
-		# Because there is no floor check, we cannot just set velocity.y to something else
-		#   since gravity will immediately take over afterwards.
-		#   We need something like `if not jumping, apply gravity. else, do not apply gravity
-		pass
-	move_and_slide()
+		if first_move:
+			first_move = false
+			freeze = false
+		linear_velocity = Vector2.ZERO
+		apply_central_impulse(Vector2(0, up_force))
+
+
+func _on_area_2d_body_entered(body):
+	print_debug(body)
+	if body.has_method("pipe") or body.has_method("OOB"):
+		$"..".restart()
+

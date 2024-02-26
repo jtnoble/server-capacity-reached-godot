@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc3878gi5j828"]
+[gd_scene load_steps=9 format=3 uid="uid://bc3878gi5j828"]
 
 [ext_resource type="Texture2D" uid="uid://b23u2wmj58dwf" path="res://images/main_menu_img.jpg" id="1_7ji57"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_gwpah"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dlip37b6lpdct" path="res://images/servercapacitytext.png" id="3_vh1kh"]
 [ext_resource type="Script" path="res://scenes/StartLabel.gd" id="5_db6kl"]
 [ext_resource type="Script" path="res://scenes/Servercapacitytext.gd" id="5_urpim"]
-[ext_resource type="AudioStream" uid="uid://cjspr86gva6fo" path="res://other/mirykS.ogg" id="7_q43ht"]
+[ext_resource type="AudioStream" uid="uid://cjspr86gva6fo" path="res://audio/mirykS.ogg" id="7_vsyel"]
+[ext_resource type="AudioStream" uid="uid://3otwgbto5mmf" path="res://audio/win_mg_sound.ogg" id="8_itoa2"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_gwpah")
@@ -65,9 +66,14 @@ one_shot = true
 wait_time = 8.0
 one_shot = true
 
-[node name="BGMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_q43ht")
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="BGMusic" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("7_vsyel")
 autoplay = true
+
+[node name="WinMinigameNoise" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("8_itoa2")
 
 [connection signal="timeout" from="StartNextGameTimer" to="." method="_on_start_next_game_timer_timeout"]
 [connection signal="timeout" from="EndGameBeforeFadeTimer" to="." method="_on_end_game_before_fade_timer_timeout"]

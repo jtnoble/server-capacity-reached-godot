@@ -1,8 +1,10 @@
 extends Node2D
 
+var reloadable: bool = false
 @onready var player = $player
 
 var timer_time: float = 30
+
 
 signal minigame_completed()
 
