@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bc3878gi5j828"]
+[gd_scene load_steps=10 format=3 uid="uid://bc3878gi5j828"]
 
 [ext_resource type="Texture2D" uid="uid://b23u2wmj58dwf" path="res://images/main_menu_img.jpg" id="1_7ji57"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_gwpah"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dlip37b6lpdct" path="res://images/servercapacitytext.png" id="3_vh1kh"]
 [ext_resource type="Script" path="res://scenes/StartLabel.gd" id="5_db6kl"]
 [ext_resource type="Script" path="res://scenes/Servercapacitytext.gd" id="5_urpim"]
+[ext_resource type="FontFile" uid="uid://0o3nfkp8k3hk" path="res://other/PressStart2P-Regular.ttf" id="6_nrnc5"]
 [ext_resource type="AudioStream" uid="uid://cjspr86gva6fo" path="res://audio/mirykS.ogg" id="7_vsyel"]
 [ext_resource type="AudioStream" uid="uid://3otwgbto5mmf" path="res://audio/win_mg_sound.ogg" id="8_itoa2"]
 
@@ -33,29 +34,44 @@ one_shot = true
 
 [node name="CompleteLabel" type="Label" parent="."]
 visible = false
-offset_left = 112.0
-offset_top = 397.0
-offset_right = 1209.0
-offset_bottom = 548.0
-theme_override_font_sizes/font_size = 110
+offset_left = 29.0
+offset_top = 443.0
+offset_right = 1289.0
+offset_bottom = 594.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("6_nrnc5")
+theme_override_font_sizes/font_size = 70
 text = "Minigame Complete!"
 
 [node name="StartLabel" type="Label" parent="."]
-offset_left = 159.0
-offset_top = 412.0
-offset_right = 1089.0
-offset_bottom = 537.0
-theme_override_font_sizes/font_size = 91
+offset_left = 30.0
+offset_top = 450.0
+offset_right = 1262.0
+offset_bottom = 575.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("6_nrnc5")
+theme_override_font_sizes/font_size = 56
 text = "Press 'Space' To Start"
 script = ExtResource("5_db6kl")
 
 [node name="ConnectingEndGameLabel" type="Label" parent="."]
 visible = false
-offset_left = 155.0
-offset_top = 419.0
-offset_right = 1160.0
-offset_bottom = 551.0
-theme_override_font_sizes/font_size = 96
+offset_left = 74.0
+offset_top = 447.0
+offset_right = 1250.0
+offset_bottom = 579.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("6_nrnc5")
+theme_override_font_sizes/font_size = 56
 text = "Connecting to game..."
 
 [node name="EndGameBeforeFadeTimer" type="Timer" parent="."]

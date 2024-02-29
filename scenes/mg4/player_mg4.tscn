@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://5k6hh8iviqj"]
+
+[ext_resource type="Script" path="res://scenes/mg4/player_mg4.gd" id="1_d57s4"]
+[ext_resource type="Texture2D" uid="uid://danqitmbts25v" path="res://images/monochrome_tilemap_packed.png" id="1_ny1ok"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r442m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpyc2"]
+atlas = ExtResource("1_ny1ok")
+region = Rect2(0, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2essm"]
+atlas = ExtResource("1_ny1ok")
+region = Rect2(16, 304, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w03c1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpyc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2essm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+position = Vector2(156, 100)
+script = ExtResource("1_d57s4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_r442m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w03c1")
+
+[node name="ShootTimeout" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ShootTimeout" to="." method="_on_shoot_timeout_timeout"]
