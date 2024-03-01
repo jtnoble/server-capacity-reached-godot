@@ -38,6 +38,7 @@ shape = SubResource("RectangleShape2D_r442m")
 sprite_frames = SubResource("SpriteFrames_w03c1")
 
 [node name="ShootTimeout" type="Timer" parent="."]
+wait_time = 0.75
 one_shot = true
 
 [connection signal="timeout" from="ShootTimeout" to="." method="_on_shoot_timeout_timeout"]

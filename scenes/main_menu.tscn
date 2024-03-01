@@ -29,7 +29,6 @@ texture = ExtResource("3_vh1kh")
 script = ExtResource("5_urpim")
 
 [node name="StartNextGameTimer" type="Timer" parent="."]
-wait_time = 5.0
 one_shot = true
 
 [node name="CompleteLabel" type="Label" parent="."]

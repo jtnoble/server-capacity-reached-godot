@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=3 uid="uid://biramh0vtkhql"]
+
+[ext_resource type="PackedScene" uid="uid://hkjplmyd3h40" path="res://scenes/mg4/enemy_mg4.tscn" id="1_jpuqq"]
+[ext_resource type="Script" path="res://scenes/mg4/enemies_holder.gd" id="1_sty5l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kq400"]
+
+[node name="Enemies" type="Area2D"]
+script = ExtResource("1_sty5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kq400")
+disabled = true
+
+[node name="enemy" parent="." instance=ExtResource("1_jpuqq")]
+
+[node name="enemy2" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(175, 0)
+
+[node name="enemy3" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(350, 0)
+
+[node name="enemy4" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(525, 0)
+
+[node name="enemy5" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(700, 0)
+
+[node name="enemy6" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(875, 0)
+
+[node name="enemy7" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(1050, 0)
+
+[node name="enemy8" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(1225, 0)
+
+[node name="enemy9" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(0, 160)
+
+[node name="enemy10" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(175, 160)
+
+[node name="enemy11" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(350, 160)
+
+[node name="enemy12" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(525, 160)
+
+[node name="enemy13" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(700, 160)
+
+[node name="enemy14" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(875, 160)
+
+[node name="enemy15" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(1050, 160)
+
+[node name="enemy16" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(1225, 160)
+
+[node name="enemy17" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(0, 320)
+
+[node name="enemy18" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(175, 320)
+
+[node name="enemy19" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(350, 320)
+
+[node name="enemy20" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(525, 320)
+
+[node name="enemy21" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(700, 320)
+
+[node name="enemy22" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(875, 320)
+
+[node name="enemy23" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(1050, 320)
+
+[node name="enemy24" parent="." instance=ExtResource("1_jpuqq")]
+position = Vector2(1225, 320)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

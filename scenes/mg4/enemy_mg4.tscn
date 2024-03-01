@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://hkjplmyd3h40"]
+
+[ext_resource type="Script" path="res://scenes/mg4/enemy_mg4.gd" id="1_0b8mu"]
+[ext_resource type="Texture2D" uid="uid://danqitmbts25v" path="res://images/monochrome_tilemap_packed.png" id="1_li2ug"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqtjc"]
+size = Vector2(12.5, 7.375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ln60"]
+atlas = ExtResource("1_li2ug")
+region = Rect2(48, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1rta"]
+atlas = ExtResource("1_li2ug")
+region = Rect2(64, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f86rk"]
+atlas = ExtResource("1_li2ug")
+region = Rect2(80, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn07g"]
+atlas = ExtResource("1_li2ug")
+region = Rect2(48, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocfmx"]
+atlas = ExtResource("1_li2ug")
+region = Rect2(64, 304, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_odsgk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ln60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1rta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f86rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f86rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f86rk")
+}],
+"loop": false,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn07g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocfmx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lehp"]
+size = Vector2(13.75, 8.75)
+
+[node name="enemy" type="StaticBody2D"]
+scale = Vector2(8, 8)
+script = ExtResource("1_0b8mu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.125, 0.4375)
+shape = SubResource("RectangleShape2D_lqtjc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_odsgk")
+animation = &"death"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.375)
+shape = SubResource("RectangleShape2D_3lehp")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

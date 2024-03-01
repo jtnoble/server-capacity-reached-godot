@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
-@export var speed: float = 500
+@export var speed: float = 200
 var can_shoot: bool = true
 var bullet = preload("res://scenes/mg4/player_bullet.tscn")
 
+func _ready():
+	$AnimatedSprite2D.play("default")
+	
 func _physics_process(_delta):
 	movement()
 	shoot()

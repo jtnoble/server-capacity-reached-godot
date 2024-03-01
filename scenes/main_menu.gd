@@ -52,7 +52,6 @@ func _handle_deferred_load_scene(node):
 	add_child(node)
 	
 func _on_reload_minigame():
-	print_debug("MG RELOAD")
 	current_mg.queue_free()
 	load_scene(scenes[scene_index])
 	
@@ -61,11 +60,9 @@ func _on_start_next_game_timer_timeout():
 	load_scene(scenes[scene_index])
 
 func _on_minigame_complete():
-	print_debug("MINIGAME COMPLETE")
 	next_level()
 
 func all_minigames_completed():
-	print_debug("All minigames have been completed.")
 	$Servercapacitytext.fading_out = true
 	$ConnectingEndGameLabel.visible = true
 	$EndGameBeforeFadeTimer.start()
