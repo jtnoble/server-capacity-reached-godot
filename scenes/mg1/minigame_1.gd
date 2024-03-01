@@ -5,7 +5,6 @@ var reloadable: bool = false
 
 var timer_time: float = 30
 
-
 signal minigame_completed()
 
 func _ready():

@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://cpeipeqkur32d"]
+[gd_scene load_steps=18 format=3 uid="uid://cpeipeqkur32d"]
 
 [ext_resource type="Script" path="res://scenes/mg1/minigame_1.gd" id="1_i1itf"]
-[ext_resource type="Texture2D" uid="uid://dbl2vb2dfpwug" path="res://images/tiles.png" id="1_yrg5g"]
 [ext_resource type="Texture2D" uid="uid://danqitmbts25v" path="res://images/monochrome_tilemap_packed.png" id="2_xnhrd"]
 [ext_resource type="Script" path="res://scenes/mg1/player.gd" id="3_67mug"]
 [ext_resource type="Script" path="res://scenes/mg1/TimerHandle.gd" id="4_w01ps"]
@@ -1232,6 +1231,28 @@ sources/0 = SubResource("TileSetAtlasSource_3enw5")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cfbm"]
 size = Vector2(39.6667, 38.6667)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4g10u"]
+atlas = ExtResource("2_xnhrd")
+region = Rect2(0, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hylro"]
+atlas = ExtResource("2_xnhrd")
+region = Rect2(16, 304, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fs6ax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4g10u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hylro")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjs5d"]
 size = Vector2(38.6667, 38)
 
@@ -1258,16 +1279,14 @@ script = ExtResource("3_67mug")
 position = Vector2(0.833336, 1.33331)
 shape = SubResource("RectangleShape2D_7cfbm")
 
-[node name="Sprite2D" type="Sprite2D" parent="player"]
-position = Vector2(1, 2)
-scale = Vector2(0.32, 0.32)
-texture = ExtResource("1_yrg5g")
-region_enabled = true
-region_rect = Rect2(128, 0, 128, 128)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 position = Vector2(0.833336, 1.33331)
 shape = SubResource("RectangleShape2D_7cfbm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
+position = Vector2(0.666667, 1.33333)
+scale = Vector2(2.75, 2.75)
+sprite_frames = SubResource("SpriteFrames_fs6ax")
 
 [node name="goal" type="Area2D" parent="."]
 position = Vector2(5386, 1542)
@@ -1277,11 +1296,12 @@ scale = Vector2(3, 3)
 position = Vector2(19, 19.6667)
 shape = SubResource("RectangleShape2D_cjs5d")
 
-[node name="ColorRect" type="ColorRect" parent="goal"]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0, 1, 0, 1)
-metadata/_edit_use_anchors_ = true
+[node name="Sprite2D" type="Sprite2D" parent="goal"]
+position = Vector2(19, 19.6667)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_xnhrd")
+region_enabled = true
+region_rect = Rect2(32, 64, 16, 16)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0

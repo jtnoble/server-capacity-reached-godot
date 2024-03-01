@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
 var speed: float = 100
-	
+
+func _ready():
+	$AnimatedSprite2D.play("default")
+
 func _physics_process(delta):
 	move(delta)
 	
