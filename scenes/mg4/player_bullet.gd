@@ -6,6 +6,7 @@ class_name Bullet
 @export var enemy_bullet_speed: float = -150
 var speed: float
 var x_spawn: float
+var y_spawn: float
 var parent
 
 func _ready():
@@ -13,10 +14,13 @@ func _ready():
 	if parent is Player:
 		speed = player_bullet_speed
 		$PlayerBullet.play()
+		y_spawn = -15
 	else:
 		speed = enemy_bullet_speed
 		$EnemyBullet.play()
+		y_spawn = 15
 	x_spawn = global_position.x
+	position.y = y_spawn
 
 func _process(_delta):
 	global_position = Vector2(x_spawn, global_position.y + -speed * _delta)
