@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://hkjplmyd3h40"]
+[gd_scene load_steps=12 format=3 uid="uid://hkjplmyd3h40"]
 
 [ext_resource type="Script" path="res://scenes/mg4/enemy_mg4.gd" id="1_0b8mu"]
 [ext_resource type="Texture2D" uid="uid://danqitmbts25v" path="res://images/monochrome_tilemap_packed.png" id="1_li2ug"]
+[ext_resource type="AudioStream" uid="uid://b1mqc4f63k8m7" path="res://audio/explosion.ogg" id="3_6xsn0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lqtjc"]
 size = Vector2(12.5, 7.375)
@@ -80,6 +81,10 @@ animation = &"death"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 0.375)
 shape = SubResource("RectangleShape2D_3lehp")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6xsn0")
+volume_db = -4.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxns71ttq7prg"]
+[gd_scene load_steps=15 format=3 uid="uid://bxns71ttq7prg"]
 
 [ext_resource type="TileSet" uid="uid://bfauxmomnc2px" path="res://scenes/minigame_tiles.tres" id="1_1q2na"]
 [ext_resource type="Script" path="res://scenes/mg4/minigame_4.gd" id="1_4wcmd"]
@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://xavkmhxqay4t" path="res://images/input_prompts/Default/keyboard_space.png" id="3_84xkx"]
 [ext_resource type="PackedScene" uid="uid://5k6hh8iviqj" path="res://scenes/mg4/player_mg4.tscn" id="3_uhlja"]
 [ext_resource type="Script" path="res://scenes/mg4/Collisions.gd" id="3_v6e4a"]
+[ext_resource type="AudioStream" uid="uid://bw6s6nxusca0n" path="res://audio/heli-sound.ogg" id="6_7mes8"]
 [ext_resource type="PackedScene" uid="uid://biramh0vtkhql" path="res://scenes/mg4/enemies_holder.tscn" id="7_e3afr"]
+[ext_resource type="Texture2D" uid="uid://dylbppg4v5odm" path="res://images/input_prompts/Default/keyboard_a.png" id="7_od8qj"]
+[ext_resource type="Texture2D" uid="uid://bhua8kpxuqdw4" path="res://images/input_prompts/Default/keyboard_d.png" id="8_1mdro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tk4t3"]
 size = Vector2(692.75, 20)
@@ -67,6 +70,11 @@ text = "30"
 position = Vector2(2871, 1621)
 scale = Vector2(8, 8)
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("6_7mes8")
+volume_db = -5.0
+autoplay = true
+
 [node name="Instructions" type="Node2D" parent="."]
 
 [node name="Title" type="Label" parent="Instructions"]
@@ -93,6 +101,16 @@ theme_override_fonts/font = ExtResource("2_2hfsx")
 theme_override_font_sizes/font_size = 140
 text = "Destroy
 Enemies"
+
+[node name="KeyboardA" type="Sprite2D" parent="Instructions"]
+position = Vector2(2575, 304)
+scale = Vector2(3, 3)
+texture = ExtResource("7_od8qj")
+
+[node name="KeyboardD" type="Sprite2D" parent="Instructions"]
+position = Vector2(2751, 304)
+scale = Vector2(3, 3)
+texture = ExtResource("8_1mdro")
 
 [node name="Enemies" parent="." instance=ExtResource("7_e3afr")]
 position = Vector2(2113, 742)

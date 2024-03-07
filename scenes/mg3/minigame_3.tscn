@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cfbnpp16kd5t7"]
+[gd_scene load_steps=18 format=3 uid="uid://cfbnpp16kd5t7"]
 
 [ext_resource type="Script" path="res://scenes/mg3/minigame_3.gd" id="1_ttva4"]
 [ext_resource type="TileSet" uid="uid://bfauxmomnc2px" path="res://scenes/minigame_tiles.tres" id="2_hudii"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/mg3/TileMap_mg3_outerbounds.gd" id="3_phvdh"]
 [ext_resource type="Script" path="res://scenes/mg3/player.gd" id="4_7tkov"]
 [ext_resource type="Script" path="res://scenes/mg3/EndPos.gd" id="6_v3c4d"]
+[ext_resource type="AudioStream" uid="uid://bw6s6nxusca0n" path="res://audio/heli-sound.ogg" id="8_kdmv3"]
 
 [sub_resource type="Theme" id="Theme_kn8ke"]
 default_font = ExtResource("3_4xgan")
@@ -117,6 +118,10 @@ shape = SubResource("RectangleShape2D_qvsck")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 position = Vector2(1, -4.5)
 shape = SubResource("RectangleShape2D_bfj2w")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("8_kdmv3")
+autoplay = true
 
 [node name="SpawnPos" type="Node2D" parent="."]
 position = Vector2(5518, 591)

@@ -26,6 +26,7 @@ func shoot():
 		$ShootTimeout.start()
 
 func death():
+	$DeathSound.play()
 	get_parent().reload()
 	
 func _on_shoot_timeout_timeout():

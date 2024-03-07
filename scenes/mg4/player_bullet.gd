@@ -12,8 +12,10 @@ func _ready():
 	parent = get_parent()
 	if parent is Player:
 		speed = player_bullet_speed
+		$PlayerBullet.play()
 	else:
 		speed = enemy_bullet_speed
+		$EnemyBullet.play()
 	x_spawn = global_position.x
 
 func _process(_delta):

@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://tflyhlc8pu7m"]
+[gd_scene load_steps=7 format=3 uid="uid://tflyhlc8pu7m"]
 
 [ext_resource type="Texture2D" uid="uid://dbl2vb2dfpwug" path="res://images/tiles.png" id="1_ek4f0"]
 [ext_resource type="Script" path="res://scenes/mg4/player_bullet.gd" id="1_ri0wh"]
+[ext_resource type="AudioStream" uid="uid://c2k4lm2ypj370" path="res://audio/laserShootPlayer.ogg" id="3_jnqlo"]
+[ext_resource type="AudioStream" uid="uid://cb5rk68egac0d" path="res://audio/laserShootEnemy.ogg" id="4_n6o52"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfx0w"]
 size = Vector2(80, 80)
@@ -27,5 +29,13 @@ region_rect = Rect2(0, 128, 100, 128)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(2.38419e-06, 1.19209e-06)
 shape = SubResource("RectangleShape2D_yrmv5")
+
+[node name="PlayerBullet" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jnqlo")
+volume_db = -7.0
+
+[node name="EnemyBullet" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_n6o52")
+volume_db = -7.0
 
 [connection signal="body_entered" from="StaticBody2D" to="." method="_on_body_entered"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://5k6hh8iviqj"]
+[gd_scene load_steps=8 format=3 uid="uid://5k6hh8iviqj"]
 
 [ext_resource type="Script" path="res://scenes/mg4/player_mg4.gd" id="1_d57s4"]
 [ext_resource type="Texture2D" uid="uid://danqitmbts25v" path="res://images/monochrome_tilemap_packed.png" id="1_ny1ok"]
+[ext_resource type="AudioStream" uid="uid://b1mqc4f63k8m7" path="res://audio/explosion.ogg" id="3_485v3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r442m"]
 
@@ -40,5 +41,10 @@ sprite_frames = SubResource("SpriteFrames_w03c1")
 [node name="ShootTimeout" type="Timer" parent="."]
 wait_time = 0.65
 one_shot = true
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-156, -100)
+stream = ExtResource("3_485v3")
+volume_db = -4.0
 
 [connection signal="timeout" from="ShootTimeout" to="." method="_on_shoot_timeout_timeout"]

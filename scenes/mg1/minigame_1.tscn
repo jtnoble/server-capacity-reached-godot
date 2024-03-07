@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://cpeipeqkur32d"]
+[gd_scene load_steps=19 format=3 uid="uid://cpeipeqkur32d"]
 
 [ext_resource type="Script" path="res://scenes/mg1/minigame_1.gd" id="1_i1itf"]
 [ext_resource type="Texture2D" uid="uid://danqitmbts25v" path="res://images/monochrome_tilemap_packed.png" id="2_xnhrd"]
 [ext_resource type="Script" path="res://scenes/mg1/player.gd" id="3_67mug"]
+[ext_resource type="AudioStream" uid="uid://bw6s6nxusca0n" path="res://audio/heli-sound.ogg" id="4_2k2q1"]
 [ext_resource type="Script" path="res://scenes/mg1/TimerHandle.gd" id="4_w01ps"]
 [ext_resource type="FontFile" uid="uid://0o3nfkp8k3hk" path="res://other/PressStart2P-Regular.ttf" id="6_g22rq"]
 [ext_resource type="Texture2D" uid="uid://ptbt8gx8wiky" path="res://images/input_prompts/Default/keyboard_w.png" id="7_x7vkm"]
@@ -1287,6 +1288,10 @@ shape = SubResource("RectangleShape2D_7cfbm")
 position = Vector2(0.666667, 1.33333)
 scale = Vector2(2.75, 2.75)
 sprite_frames = SubResource("SpriteFrames_fs6ax")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("4_2k2q1")
+autoplay = true
 
 [node name="goal" type="Area2D" parent="."]
 position = Vector2(5386, 1542)

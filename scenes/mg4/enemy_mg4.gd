@@ -15,6 +15,7 @@ func shoot():
 	add_child(new_bullet)
 		
 func death():
+	$DeathSound.play()
 	$AnimatedSprite2D.play("death")
 	pass
 

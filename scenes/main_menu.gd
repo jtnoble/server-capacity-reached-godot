@@ -53,6 +53,7 @@ func _handle_deferred_load_scene(node):
 	
 func _on_reload_minigame():
 	current_mg.queue_free()
+	$Audio/ReloadMinigameLose.play()
 	load_scene(scenes[scene_index])
 	
 func _on_start_next_game_timer_timeout():
