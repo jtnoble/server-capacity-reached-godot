@@ -3,12 +3,14 @@ extends StaticBody2D
 class_name Bullet
 
 @export var player_bullet_speed: float = 800
-@export var enemy_bullet_speed: float = -200
+@export var enemy_bullet_speed: float = -150
 var speed: float
 var x_spawn: float
+var parent
 
 func _ready():
-	if get_parent().name == "player":
+	parent = get_parent()
+	if parent is Player:
 		speed = player_bullet_speed
 	else:
 		speed = enemy_bullet_speed
@@ -20,7 +22,10 @@ func _process(_delta):
 func _on_body_entered(body):
 	if body.has_method("OOB"):
 		queue_free()
-	if body is Enemy:
+	if parent is Player and body is Enemy:
+		body.death()
+		queue_free()
+	elif parent is Enemy and body is Player:
 		body.death()
 		queue_free()
 

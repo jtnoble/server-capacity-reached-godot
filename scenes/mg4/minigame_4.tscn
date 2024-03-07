@@ -38,6 +38,10 @@ script = ExtResource("3_v6e4a")
 position = Vector2(336.375, 0)
 shape = SubResource("RectangleShape2D_tk4t3")
 
+[node name="BulletOOB2" type="CollisionShape2D" parent="TileMap/Collisions"]
+position = Vector2(332.875, 186.971)
+shape = SubResource("RectangleShape2D_tk4t3")
+
 [node name="LeftWall" type="CollisionShape2D" parent="TileMap/Collisions"]
 position = Vector2(193.875, 80.6951)
 shape = SubResource("RectangleShape2D_cy4al")
@@ -49,6 +53,7 @@ shape = SubResource("RectangleShape2D_cy4al")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0
+autostart = true
 
 [node name="TimerLabel" type="Label" parent="."]
 offset_left = 4933.0
@@ -91,3 +96,5 @@ Enemies"
 
 [node name="Enemies" parent="." instance=ExtResource("7_e3afr")]
 position = Vector2(2113, 742)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

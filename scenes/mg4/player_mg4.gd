@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var speed: float = 200
 var can_shoot: bool = true
 var bullet = preload("res://scenes/mg4/player_bullet.tscn")
@@ -23,5 +25,8 @@ func shoot():
 		can_shoot = false
 		$ShootTimeout.start()
 
+func death():
+	get_parent().reload()
+	
 func _on_shoot_timeout_timeout():
 	can_shoot = true

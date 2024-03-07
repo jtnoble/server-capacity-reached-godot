@@ -15,7 +15,6 @@ script = ExtResource("1_ri0wh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.57628e-06, 1.19209e-06)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_pfx0w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -27,7 +26,6 @@ region_rect = Rect2(0, 128, 100, 128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(2.38419e-06, 1.19209e-06)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_yrmv5")
 
 [connection signal="body_entered" from="StaticBody2D" to="." method="_on_body_entered"]
